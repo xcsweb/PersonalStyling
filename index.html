@@ -1630,33 +1630,91 @@ body {
   <!-- Quick Navigation -->
   <div style="position:sticky;top:0;z-index:100;background:var(--bg-primary);padding:12px 16px;border-bottom:1px solid var(--border);margin:-16px -16px 0 -16px;">
     <div style="display:flex;overflow-x:auto;gap:8px;padding-bottom:4px;-webkit-overflow-scrolling:touch;" id="colorNav">
+      <a href="#sec-smart" class="nav-chip" onclick="scrollToSection(event,'sec-smart')">✨ 智能推荐</a>
       <a href="#sec-goldilocks" class="nav-chip" onclick="scrollToSection(event,'sec-goldilocks')">⚖️ 适度原则</a>
       <a href="#sec-603010" class="nav-chip" onclick="scrollToSection(event,'sec-603010')">📊 60-30-10</a>
       <a href="#sec-wheel" class="nav-chip" onclick="scrollToSection(event,'sec-wheel')">🌈 色轮</a>
       <a href="#sec-safe" class="nav-chip" onclick="scrollToSection(event,'sec-safe')">🛡️ 安全配色</a>
       <a href="#sec-skin" class="nav-chip" onclick="scrollToSection(event,'sec-skin')">👤 肤色配色</a>
+      <a href="#sec-season" class="nav-chip" onclick="scrollToSection(event,'sec-season')">🌸 季节配色</a>
+      <a href="#sec-occasion" class="nav-chip" onclick="scrollToSection(event,'sec-occasion')">🎉 场合配色</a>
       <a href="#sec-fabric" class="nav-chip" onclick="scrollToSection(event,'sec-fabric')">🧵 面料</a>
       <a href="#sec-design" class="nav-chip" onclick="scrollToSection(event,'sec-design')">✂️ 设计</a>
       <a href="#sec-accessory" class="nav-chip" onclick="scrollToSection(event,'sec-accessory')">🕶️ 配饰</a>
-      <a href="#sec-hair" class="nav-chip" onclick="scrollToSection(event,'sec-hair')">💇 发型</a>
-      <a href="#sec-grooming" class="nav-chip" onclick="scrollToSection(event,'sec-grooming')">🪒 仪容</a>
-      <a href="#sec-makeup" class="nav-chip" onclick="scrollToSection(event,'sec-makeup')">💄 化妆</a>
-      <a href="#sec-skincare" class="nav-chip" onclick="scrollToSection(event,'sec-skincare')">🧴 护肤</a>
-      <a href="#sec-haircare" class="nav-chip" onclick="scrollToSection(event,'sec-haircare')">💇 头发护理</a>
-      <a href="#sec-shoes" class="nav-chip" onclick="scrollToSection(event,'sec-shoes')">👞 鞋子</a>
-      <a href="#sec-bag" class="nav-chip" onclick="scrollToSection(event,'sec-bag')">🎒 包袋</a>
       <a href="#sec-perfume" class="nav-chip" onclick="scrollToSection(event,'sec-perfume')">🧴 香水</a>
-      <a href="#sec-gift" class="nav-chip" onclick="scrollToSection(event,'sec-gift')">🎁 送礼</a>
-      <a href="#sec-season" class="nav-chip" onclick="scrollToSection(event,'sec-season')">🌸 季节</a>
-      <a href="#sec-occasion" class="nav-chip" onclick="scrollToSection(event,'sec-occasion')">🎉 场合</a>
-      <a href="#sec-body" class="nav-chip" onclick="scrollToSection(event,'sec-body')">💪 身材</a>
-      <a href="#sec-matching" class="nav-chip" onclick="scrollToSection(event,'sec-matching')">🔗 搭配规则</a>
-      <a href="#sec-mistakes" class="nav-chip" onclick="scrollToSection(event,'sec-mistakes')">⚠️ 避雷</a>
-      <a href="#sec-size" class="nav-chip" onclick="scrollToSection(event,'sec-size')">📏 尺码</a>
-      <a href="#sec-age" class="nav-chip" onclick="scrollToSection(event,'sec-age')">📅 年龄</a>
-      <a href="#sec-height" class="nav-chip" onclick="scrollToSection(event,'sec-height')">📏 身高</a>
       <a href="#sec-psychology" class="nav-chip" onclick="scrollToSection(event,'sec-psychology')">🎨 色彩心理</a>
-      <a href="#sec-agecolor" class="nav-chip" onclick="scrollToSection(event,'sec-agecolor')">🎨 年龄色彩</a>
+    </div>
+  </div>
+
+  <!-- Smart Recommendation -->
+  <div class="guide-block" id="sec-smart">
+    <div class="card" style="background:linear-gradient(135deg, #1a1a1a 0%, #333 100%);color:#fff;">
+      <h3 style="color:#fff;">✨ 智能配色推荐</h3>
+      <p style="font-size:0.8rem;color:rgba(255,255,255,0.8);margin-bottom:16px;">基于你的肤色和风格，智能生成最合适的配色方案</p>
+      
+      <div id="smartRecommendation" style="margin-top:16px;">
+        <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:16px;margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div id="userSkinTone" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FDEBD3,#F5CBA7);border:2px solid #fff;"></div>
+            <div>
+              <div style="font-size:0.9rem;font-weight:600;" id="skinToneName">冷白皮</div>
+              <div style="font-size:0.75rem;opacity:0.7;">根据您的肤色推荐</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <div style="flex:2;background:rgba(255,255,255,0.15);border-radius:8px;padding:12px;">
+              <div style="font-size:0.7rem;opacity:0.7;margin-bottom:6px;">主色 60%</div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div id="recMainColor" style="width:40px;height:40px;border-radius:8px;background:#1B2A4A;"></div>
+                <div>
+                  <div style="font-size:0.8rem;font-weight:500;" id="recMainName">藏蓝</div>
+                  <div style="font-size:0.65rem;opacity:0.7;">适合正式场合</div>
+                </div>
+              </div>
+            </div>
+            <div style="flex:1;background:rgba(255,255,255,0.15);border-radius:8px;padding:12px;">
+              <div style="font-size:0.7rem;opacity:0.7;margin-bottom:6px;">辅色 30%</div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div id="recSubColor" style="width:32px;height:32px;border-radius:8px;background:#ECF0F1;border:1px solid #ddd;"></div>
+                <div style="font-size:0.75rem;" id="recSubName">白色</div>
+              </div>
+            </div>
+            <div style="flex:1;background:rgba(255,255,255,0.15);border-radius:8px;padding:12px;">
+              <div style="font-size:0.7rem;opacity:0.7;margin-bottom:6px;">点缀 10%</div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div id="recAccColor" style="width:32px;height:32px;border-radius:8px;background:#E74C3C;"></div>
+                <div style="font-size:0.75rem;" id="recAccName">红色</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="background:rgba(255,255,255,0.08);border-radius:12px;padding:16px;">
+          <div style="font-size:0.8rem;font-weight:600;margin-bottom:12px;">🎯 推荐搭配</div>
+          <div id="recExamples" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+            <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;">
+              <div style="font-size:0.85rem;font-weight:500;margin-bottom:4px;">👔 商务正装</div>
+              <div style="font-size:0.7rem;opacity:0.8;">深蓝西装 + 白衬衫 + 红领带</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;">
+              <div style="font-size:0.85rem;font-weight:500;margin-bottom:4px;">💼 商务休闲</div>
+              <div style="font-size:0.7rem;opacity:0.8;">藏蓝外套 + 白T恤 + 深灰裤</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;">
+              <div style="font-size:0.85rem;font-weight:500;margin-bottom:4px;">🎉 约会聚会</div>
+              <div style="font-size:0.7rem;opacity:0.8;">酒红毛衣 + 白衬衫 + 黑裤子</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;">
+              <div style="font-size:0.85rem;font-weight:500;margin-bottom:4px;">🏃 运动休闲</div>
+              <div style="font-size:0.7rem;opacity:0.8;">深灰卫衣 + 藏蓝运动裤 + 白鞋</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top:16px;padding:12px;background:rgba(255,255,255,0.08);border-radius:8px;font-size:0.75rem;opacity:0.9;">
+        💡 提示：点击下方「肤色配色」标签，详细了解适合你的颜色
+      </div>
     </div>
   </div>
 
@@ -1837,83 +1895,7 @@ body {
     <div class="card">
       <h3>🛡️ 安全配色组合</h3>
       <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:16px;">不会出错的经典配色方案</p>
-      <div style="overflow-x:auto;">
-        <table class="color-table">
-          <thead>
-            <tr>
-              <th>风格</th>
-              <th>配色方案</th>
-              <th>适用场合</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>经典黑白</td>
-              <td>
-                <div class="color-pair">
-                  <div class="color-pair-swatch" style="background:#1a1a1a;"></div>
-                  <div class="color-pair-swatch" style="background:#ffffff;border:1px solid #ddd;"></div>
-                </div>
-              </td>
-              <td>所有场合</td>
-            </tr>
-            <tr>
-              <td>海军蓝白</td>
-              <td>
-                <div class="color-pair">
-                  <div class="color-pair-swatch" style="background:#1B2A4A;"></div>
-                  <div class="color-pair-swatch" style="background:#ffffff;border:1px solid #ddd;"></div>
-                </div>
-              </td>
-              <td>商务/正式</td>
-            </tr>
-            <tr>
-              <td>大地色系</td>
-              <td>
-                <div class="color-pair">
-                  <div class="color-pair-swatch" style="background:#8B7355;"></div>
-                  <div class="color-pair-swatch" style="background:#D2B48C;"></div>
-                  <div class="color-pair-swatch" style="background:#F5F5DC;"></div>
-                </div>
-              </td>
-              <td>休闲/约会</td>
-            </tr>
-            <tr>
-              <td>灰色渐变</td>
-              <td>
-                <div class="color-pair">
-                  <div class="color-pair-swatch" style="background:#333333;"></div>
-                  <div class="color-pair-swatch" style="background:#888888;"></div>
-                  <div class="color-pair-swatch" style="background:#CCCCCC;"></div>
-                </div>
-              </td>
-              <td>通勤/商务</td>
-            </tr>
-            <tr>
-              <td>军绿中性</td>
-              <td>
-                <div class="color-pair">
-                  <div class="color-pair-swatch" style="background:#4A5D23;"></div>
-                  <div class="color-pair-swatch" style="background:#1a1a1a;"></div>
-                  <div class="color-pair-swatch" style="background:#D2B48C;"></div>
-                </div>
-              </td>
-              <td>休闲/街头</td>
-            </tr>
-            <tr>
-              <td>酒红经典</td>
-              <td>
-                <div class="color-pair">
-                  <div class="color-pair-swatch" style="background:#722F37;"></div>
-                  <div class="color-pair-swatch" style="background:#2C3E50;"></div>
-                  <div class="color-pair-swatch" style="background:#ECF0F1;"></div>
-                </div>
-              </td>
-              <td>约会/正式</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+
     </div>
   </div>
 
@@ -5060,6 +5042,100 @@ const accColorOptions = [
   { color: '#8B4513', name: '棕色' }
 ];
 
+// ===== Smart Color Recommendation =====
+const skinToneRecommendations = {
+  '冷白皮': {
+    gradient: 'linear-gradient(135deg,#FDEBD3,#F5CBA7)',
+    main: { color: '#1B2A4A', name: '藏蓝', desc: '适合正式场合' },
+    sub: { color: '#ECF0F1', name: '白色', desc: '提亮肤色' },
+    acc: { color: '#E74C3C', name: '红色', desc: '点睛之笔' },
+    examples: [
+      { type: '👔 商务正装', desc: '深蓝西装 + 白衬衫 + 红领带' },
+      { type: '💼 商务休闲', desc: '藏蓝外套 + 白T恤 + 深灰裤' },
+      { type: '🎉 约会聚会', desc: '酒红毛衣 + 白衬衫 + 黑裤子' },
+      { type: '🏃 运动休闲', desc: '深灰卫衣 + 藏蓝运动裤 + 白鞋' }
+    ]
+  },
+  '暖黄皮': {
+    gradient: 'linear-gradient(135deg,#F9E4B7,#E8C99B)',
+    main: { color: '#8B7355', name: '棕色', desc: '温暖自然' },
+    sub: { color: '#F5F5DC', name: '米白', desc: '柔和协调' },
+    acc: { color: '#D2691E', name: '焦糖', desc: '呼应肤色' },
+    examples: [
+      { type: '👔 商务正装', desc: '棕色西装 + 米白衬衫 + 深棕领带' },
+      { type: '💼 商务休闲', desc: '卡其裤 + 白衬衫 + 棕色皮带' },
+      { type: '🎉 约会聚会', desc: '焦糖色毛衣 + 白T + 深棕皮鞋' },
+      { type: '🏃 运动休闲', desc: '军绿卫衣 + 卡其短裤 + 白运动鞋' }
+    ]
+  },
+  '小麦色': {
+    gradient: 'linear-gradient(135deg,#D4A574,#C68642)',
+    main: { color: '#FFFFFF', name: '纯白', desc: '形成对比' },
+    sub: { color: '#1B2A4A', name: '藏蓝', desc: '稳重大方' },
+    acc: { color: '#E74C3C', name: '正红', desc: '活力四射' },
+    examples: [
+      { type: '👔 商务正装', desc: '白色衬衫 + 藏蓝西装 + 红色口袋巾' },
+      { type: '💼 商务休闲', desc: '白T恤 + 藏蓝牛仔裤 + 棕色皮带' },
+      { type: '🎉 约会聚会', desc: '正红POLO + 白裤子 + 棕色皮鞋' },
+      { type: '🏃 运动休闲', desc: '墨绿运动外套 + 白背心 + 黑运动裤' }
+    ]
+  },
+  '深肤色': {
+    gradient: 'linear-gradient(135deg,#8D5524,#6B3A1F)',
+    main: { color: '#FFFFFF', name: '纯白', desc: '清新明亮' },
+    sub: { color: '#E74C3C', name: '正红', desc: '热情活力' },
+    acc: { color: '#F39C12', name: '橙黄', desc: '时尚亮眼' },
+    examples: [
+      { type: '👔 商务正装', desc: '白色衬衫 + 深蓝西装 + 红色领带' },
+      { type: '💼 商务休闲', desc: '橙色T恤 + 白裤 + 深棕皮带' },
+      { type: '🎉 约会聚会', desc: '正红衬衫 + 黑裤子 + 紫色配饰' },
+      { type: '🏃 运动休闲', desc: '亮橙卫衣 + 黑运动裤 + 白运动鞋' }
+    ]
+  }
+};
+
+function initSmartRecommendation() {
+  const profile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+  const skinTone = profile.skinTone || '冷白皮';
+  const rec = skinToneRecommendations[skinTone] || skinToneRecommendations['冷白皮'];
+  
+  // 更新肤色显示
+  const skinEl = document.getElementById('userSkinTone');
+  if (skinEl) skinEl.style.background = rec.gradient;
+  
+  const skinNameEl = document.getElementById('skinToneName');
+  if (skinNameEl) skinNameEl.textContent = skinTone;
+  
+  // 更新主色
+  const mainColorEl = document.getElementById('recMainColor');
+  if (mainColorEl) mainColorEl.style.background = rec.main.color;
+  const mainNameEl = document.getElementById('recMainName');
+  if (mainNameEl) mainNameEl.textContent = rec.main.name;
+  
+  // 更新辅色
+  const subColorEl = document.getElementById('recSubColor');
+  if (subColorEl) subColorEl.style.background = rec.sub.color;
+  const subNameEl = document.getElementById('recSubName');
+  if (subNameEl) subNameEl.textContent = rec.sub.name;
+  
+  // 更新点缀色
+  const accColorEl = document.getElementById('recAccColor');
+  if (accColorEl) accColorEl.style.background = rec.acc.color;
+  const accNameEl = document.getElementById('recAccName');
+  if (accNameEl) accNameEl.textContent = rec.acc.name;
+  
+  // 更新推荐示例
+  const examplesEl = document.getElementById('recExamples');
+  if (examplesEl) {
+    examplesEl.innerHTML = rec.examples.map(ex => 
+      `<div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;">
+        <div style="font-size:0.85rem;font-weight:500;margin-bottom:4px;">${ex.type}</div>
+        <div style="font-size:0.7rem;opacity:0.8;">${ex.desc}</div>
+      </div>`
+    ).join('');
+  }
+}
+
 function renderInteractiveColors() {
   const mainEl = document.getElementById('mainColors');
   const subEl = document.getElementById('subColors');
@@ -5117,6 +5193,7 @@ function init() {
   loadWardrobe();
   renderInteractiveColors();
   renderWardrobe();
+  initSmartRecommendation();
 }
 
 init();
