@@ -1053,9 +1053,171 @@ body {
   .skin-guide-grid { grid-template-columns: 1fr; }
   .goldilocks-row { grid-template-columns: 1fr; }
 }
+@media (max-width: 500px) {
+  /* 智能推荐模块 */
+  #sec-smart .card > div > div > div:first-child {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  #sec-smart .card [style*="display:flex"][style*="gap:12px"] {
+    flex-direction: column !important;
+  }
+  #sec-smart .card [style*="display:grid"][style*="grid-template-columns:repeat(2,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 安全配色 */
+  #sec-safe [style*="grid-template-columns:repeat(2,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 肤色配色 */
+  #sec-skin [style*="display:grid"][style*="gap:16px"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 季节配色 */
+  #sec-safe [style*="grid-template-columns:repeat(2,1fr)"][style*="gap:12px"]:last-child {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 适度原则 */
+  .goldilocks-row {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 60-30-10互动 */
+  .interactive-colors {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  /* 色轮 */
+  .color-wheel {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  
+  /* 互补色组合 */
+  #sec-wheel [style*="grid-template-columns:repeat(2,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* 导航响应式 */
+  #colorNav {
+    flex-wrap: nowrap !important;
+  }
+  
+  /* 表格响应式 */
+  .color-table {
+    font-size: 0.75rem !important;
+  }
+  .color-table td,
+  .color-table th {
+    padding: 8px 6px !important;
+  }
+}
 @media (min-width: 500px) {
   .wardrobe-grid { grid-template-columns: repeat(3, 1fr); }
   .outfit-combo { grid-template-columns: repeat(4, 1fr); }
+  .skin-guide-grid { grid-template-columns: repeat(2, 1fr); }
+  .goldilocks-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 移动端基础响应式 - 关键元素 */
+@media (max-width: 480px) {
+  /* 通用grid响应式 - 所有2列3列grid变单列 */
+  [style*="grid-template-columns:repeat(2,"],
+  [style*="grid-template-columns: repeat(2,"],
+  [style*="grid-template-columns:repeat(3,"],
+  [style*="grid-template-columns: repeat(3,"] {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* 智能推荐响应式 */
+  #smartRecommendation > div:first-child {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  #smartRecommendation > div:last-child {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  #smartRecommendation > div:last-child > div {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  #recExamples {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  #recExamples > div {
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* 安全配色响应式 - 更强的选择器 */
+  #sec-safe .card > div[style*="display:grid"],
+  #sec-safe > .card > div[style*="display:grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  #sec-safe .card > div[style*="display:grid"] > div,
+  #sec-safe > .card > div[style*="display:grid"] > div {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  
+  /* 肤色配色响应式 */
+  #sec-skin .card > div[style*="display:grid"],
+  #sec-skin > .card > div[style*="display:grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  #sec-skin .card > div[style*="display:grid"] > div,
+  #sec-skin > .card > div[style*="display:grid"] > div {
+    width: 100% !important;
+    margin-bottom: 16px !important;
+  }
+  
+  /* 60-30-10响应式 */
+  .interactive-colors {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  .interactive-colors > div {
+    width: 60px !important;
+    height: 60px !important;
+    margin: 4px !important;
+  }
+  
+  /* 色轮响应式 */
+  .color-wheel {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  /* 表格响应式 */
+  .color-table-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .color-table {
+    min-width: 350px !important;
+    font-size: 0.7rem !important;
+  }
+  .color-table td,
+  .color-table th {
+    padding: 6px 4px !important;
+  }
 }
 
 /* Scrollbar */
