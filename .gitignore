@@ -1,0 +1,16 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archive files
+*.zip
+*.tar
+*.gz
+*.rar
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
